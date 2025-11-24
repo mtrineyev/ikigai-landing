@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO & Metadata -->
+    <title>Приватний Пансіонат для Літніх Людей "Ікіґай" | Догляд, Комфорт, Безпека</title>
+    <meta name="description" content="«Ікіґай» — це приватний будинок для літніх людей, де поєднуються професійний цілодобовий догляд, збалансоване харчування та комфортне спілкування. Гарантія зв'язку (Starlink) та незалежності від відключень світла.">
+    <meta name="keywords" content="пансіонат для літніх людей, будинок престарілих, догляд за літніми, Ікіґай, реабілітація, цілодобовий догляд, Starlink, Київська область">
+    <meta name="author" content="Ікіґай">
+    <link rel="canonical" href="https://ikigai.com.ua/">
+
+    <!-- Open Graph for social media sharing -->
+    <meta property="og:title" content="Приватний Пансіонат для Літніх Людей 'Ікіґай'">
+    <meta property="og:description" content="Професійний догляд, комфорт та незалежність. Життя, що має сенс.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:url" content="https://ikigai.com.ua/">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon" sizes="32x32">
+    <link rel="icon" href="assets/favicon-192x192.png" type="image/x-icon" sizes="192x192">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Стилі для шрифту та основні налаштування */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Кастомні стилі для форми та галереї */
+        .shadow-hero {
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+        .hero-bg {
+            /* Використовуємо реальний шлях до зображення від користувача */
+            background-image: url('assets/images/InsideView.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .gallery-item {
+            aspect-ratio: 4/3; /* Забезпечує однакову пропорцію для всіх зображень */
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Додаємо курсор для підказки, що елемент клікабельний */
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        /* Стилі для Лайтбоксу */
+        #lightbox.hidden {
+            display: none;
+        }
+        /* Стилі для Акордеону (для надійної роботи) */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            /* Додаємо плавний перехід для висоти та відступів */
+            transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; 
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-item[aria-expanded="true"] .accordion-content {
+            /* При відкритті встановлюємо велике фіксоване значення, 
+               яке гарантовано перекриє вміст (1500px), та додаємо відступи. */
+            max-height: 1500px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .accordion-icon {
+            transition: transform 0.3s ease-in-out;
+        }
+        .accordion-item[aria-expanded="true"] .accordion-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 1. Header and Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo/Title -->
+            <a href="#hero" class="text-2xl font-bold text-indigo-700 hover:text-indigo-900 transition duration-300">
+                Ікіґай
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
+                <a href="#about" class="hover:text-indigo-600 transition duration-300">Про нас</a>
+                <a href="#services" class="hover:text-indigo-600 transition duration-300">Послуги</a>
+                <a href="#advantages" class="hover:text-indigo-600 transition duration-300">Переваги</a>
+                <a href="#gallery" class="hover:text-indigo-600 transition duration-300">Галерея</a>
+                <a href="#faq" class="hover:text-indigo-600 transition duration-300">FAQ</a>
+                <a href="#contact" class="hover:text-indigo-600 transition duration-300">Контакти</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-inner pb-2">
+            <a href="#about" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Про нас</a>
+            <a href="#services" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Послуги</a>
+            <a href="#advantages" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Переваги</a>
+            <a href="#gallery" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Галерея</a>
+            <a href="#faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700" onclick="document.getElementById('mobile-menu').classList.add('hidden')">FAQ</a>
+            <a href="#contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Контакти</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Hero Section -->
+        <section id="hero" class="hero-bg bg-indigo-700 text-white py-24 md:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-indigo-900/60 p-8 md:p-12 rounded-xl shadow-2xl">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                    «Ікіґай»: Життя, що має сенс.
+                </h1>
+                <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
+                    Приватний пансіонат для літніх людей, де турбота, комфорт і безпека — наш головний пріоритет.
+                </p>
+                <a href="#contact" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-hero text-lg">
+                    Отримати консультацію
+                </a>
+                <p class="mt-4 text-sm font-light text-indigo-200">
+                    Або зателефонуйте: +380 (50) 680-0989
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. About/Philosophy Section -->
+        <section id="about" class="py-16 md:py-24 bg-white">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Наша Філософія: Гідність та Повага</h2>
+                <div class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                    <p class="mb-4">
+                        Термін «Ікіґай» (Ikigai) в перекладі з японської означає «сенс життя», «те, що змушує прокидатися щоранку». У нашому пансіонаті ми прагнемо, щоб кожна людина похилого віку відчувала, що її життя наповнене змістом, радістю спілкування та повноцінним дозвіллям.
+                    </p>
+                    <p>
+                        Ми розуміємо, як важко прийняти рішення про переїзд рідних. Наша мета — стати надійним партнером, який забезпечить професійний цілодобовий догляд, медичний контроль та атмосферу справжнього домашнього затишку. Тут ваші батьки чи дідусі знайдуть нове, безпечне та комфортне життя.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Services Section -->
+        <section id="services" class="py-16 md:py-24 bg-indigo-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-800 mb-12">Повний Спектр Послуг та Догляду</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-600 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Цілодобовий Професійний Нагляд</h3>
+                        <p class="text-gray-600">
+                            Кваліфікований персонал 24/7. Постійний моніторинг стану здоров'я (тиск, температура, рівень глюкози), контроль прийому ліків та невідкладна допомога.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-600 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Реабілітація та Відновлення</h3>
+                        <p class="text-gray-600">
+                            Догляд після інсультів, інфарктів, травм та операцій. Індивідуальні програми відновлення, лікувальна фізкультура та консультації фахівців.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-600 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Повноцінне Харчування</h3>
+                        <p class="text-gray-600">
+                            5-разове збалансоване харчування, складене з урахуванням віку, стану здоров'я та дієтичних потреб кожного постояльця.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-600 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.526a2 2 0 01-1.789-2.894l3.5-7z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 3h.01"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Догляд за Лежачими Хворими</h3>
+                        <p class="text-gray-600">
+                            Спеціально обладнані кімнати, протипролежневі заходи, гігієнічні процедури та психологічна підтримка з особливою увагою.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 5 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-600 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20h-5v-2a3 3 0 00-5.356-1.857M12 20v-2m4.5-1.5a4.5 4.5 0 00-9 0m-4.5 0h9"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Активне Дозвілля та Спілкування</h3>
+                        <p class="text-gray-600">
+                            Організація соціалізуючих заходів, прогулянки на свіжому повітрі, творчі вечори та спілкування з однолітками для підтримки ментального здоров'я.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 6 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300">
+                        <div class="text-indigo-600 mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Психологічна Підтримка</h3>
+                        <p class="text-gray-600">
+                            Індивідуальна робота з психологом для адаптації, зменшення тривожності та підтримки позитивного емоційного стану.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Key Advantages (Focus on Starlink and Energy) -->
+        <section id="advantages" class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Ваші Гарантії Спокою</h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <!-- Text Block -->
+                    <div>
+                        <p class="text-xl text-gray-600 mb-8">
+                            У сучасних реаліях ми розуміємо, наскільки критично важливо забезпечити не лише якісний догляд, але й <b>повну незалежність</b> від зовнішніх обставин. Ми зробили інвестиції, щоб ваші рідні були у безпеці та завжди на зв'язку.
+                        </p>
+                        <ul class="space-y-6">
+                            <!-- Advantage 1: Energy Independence -->
+                            <li class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 text-green-600 mt-1">
+                                    <!-- Thunder Icon -->
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800">100% Енергетична Незалежність</h4>
+                                    <p class="text-gray-600">
+                                        <b>Потужна акумуляторна батарея та генератор</b> забезпечують безперебійне живлення всього пансіонату. Відключення світла не вплинуть на комфорт, опалення та медичне обладнання.
+                                    </p>
+                                </div>
+                            </li>
+
+                            <!-- Advantage 2: Starlink Connectivity -->
+                            <li class="flex items-start space-x-4">
+                                <div class="flex-shrink-0 text-blue-600 mt-1">
+                                    <!-- Satellite/Signal Icon -->
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9.247a18.237 18.237 0 011.666-1.5c.381-.376.804-.68 1.226-.979M10 20l4-4m-4 0l4 4m-4-10.25a7.5 7.5 0 10-.228 15.015M10 3.75a7.5 7.5 0 11.228 15.015"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-semibold text-gray-800">Безперебійний Зв'язок (Starlink)</h4>
+                                    <p class="text-gray-600">
+                                        <b>Starlink</b> гарантує швидкісний, надійний інтернет 24/7. Ваші рідні завжди зможуть зателефонувати чи скористатися відеозв'язком, а ви будете спокійні.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Image Placeholder -->
+                    <div class="rounded-xl shadow-2xl overflow-hidden flex items-center justify-center p-8 bg-white h-full">
+                        <img src="assets/logo.png" alt="Логотип Ікіґай" class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 6. Gallery Section -->
+        <section id="gallery" class="py-16 md:py-24 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-800 mb-12">Наш Пансіонат: Комфорт та Затишок</h2>
+                <p class="text-center text-lg text-gray-600 mb-10">
+                    Натисніть на зображення, щоб побачити деталі.
+                </p>
+
+                <!-- Додані класи gallery-thumb та data-index для роботи Lightbox -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-container">
+                    <!-- Gallery Item 1 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="0">
+                        <img src="assets/images/SingleRoom.jpg" alt="Фото комфортної кімнати" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 2 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="1">
+                        <img src="assets/images/Territory.jpg" alt="Фото прогулянкової території" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="2">
+                        <img src="assets/images/LivingRoom.jpg" alt="Фото спільної вітальні" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 4 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="3">
+                        <img src="assets/images/Lunch.jpg" alt="Фото збалансованого харчування" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 5 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="4">
+                        <img src="assets/images/Concert.jpg" alt="Фото різдвяного концерту" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 6 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="5">
+                        <img src="assets/images/ActiveResting.jpg" alt="Фото куточка для творчості" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 7 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="6">
+                        <img src="assets/images/Terrase.jpg" alt="Фото тераси для відпочинку" class="w-full gallery-item">
+                    </div>
+                    <!-- Gallery Item 8 -->
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="7">
+                        <img src="assets/images/Walking.jpg" alt="Фото прогулянки з доглядальницею" class="w-full gallery-item">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FAQ Section (Accordion) -->
+        <section id="faq" class="py-16 md:py-24 bg-indigo-50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">Часті Запитання (FAQ)</h2>
+
+                <div class="space-y-4">
+                    
+                    <!-- FAQ Item 1: Вартість послуг -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Скільки коштують послуги пансіонату?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <p>Ціна перебування в одномісному номері — <b>1200 грн./доба</b>.</p>
+                            <p class="mt-2">Ціна перебування в двомісному номері — <b>800 грн./доба</b>.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2: Що входить до послуг -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Що входить до базового пакету послуг пансіонату?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>Цілодобовий нагляд</li>
+                                <li>П'ятиразове харчування</li>
+                                <li>Телевізор в номері</li>
+                                <li>Щоденний моніторинг стану здоров'я (вимірювання температури, тиску, огляд спеціалістом)</li>
+                                <li>Допомога в проведенні гігієнічних процедур</li>
+                                <li>Прання та прасування білизни та постілі</li>
+                                <li>Спілкування, турбота та розваги</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3: Додаткові послуги -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Чи є послуги, які сплачуються додатково?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <p>Так. Додатково сплачуються:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4 mt-2">
+                                <li>Траспортування резидента</li>
+                                <li>Особисті розхідні гігієнічні предмети (памперси, пелюшки, тощо)</li>
+                                <li>Ліки, які має приймати резидент, якщо вони були придбані за кошти пансіонату</li>
+                                <li>Додаткові медичні маніпуляції (уколи, крапельниці, тощо)</li>
+                            </ul>
+                            <p class="mt-2 text-sm italic">Всі документи про сплату відповідних послуг/товарів надаються.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4: Мінімальний термін -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Який мінімальний термін перебування в пансіонаті?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <p>Мінімальний термін перебування в пансіонаті становить <b>14 днів</b>.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5: Допомога у переїзді -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">У вас є досвід, як вмовити рідних скористатися послугами пансіонату?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <p>Звісно, є! Ми розуміємо, що це емоційно складний процес. Приїжджайте або дзвоніть — ми обов'язково обговоримо ваш випадок і поділимось своїм досвідом та рекомендаціями, як м'яко провести розмову.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 6: Документи -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Які документи потрібно мати з собою при надходженні?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <p class="font-semibold mb-2">Для оформлення потрібні наступні документи:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>Паспорт відповідальної особи</li>
+                                <li>Паспорт майбутнього резидента</li>
+                                <li>Виписки з лікарні та рекомендації лікаря (за наявності)</li>
+                                <li>Довідка/висновок психіатра</li>
+                            </ul>
+                            <p class="font-semibold mt-4 mb-2">А також результати аналізів:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li>На COVID-19</li>
+                                <li>ЗАК, ЗАС, цукор крові натщесерце, ЕКГ, Рентген органів грудної клітки</li>
+                                <li>На гепатит В</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7: Речі, які потрібно мати з собою -->
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                            <span class="text-lg font-semibold text-gray-800 text-left">Які речі та предмети необхідно взяти з собою?</span>
+                            <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            
+                            <p class="font-semibold text-lg text-indigo-700 mb-2">Одяг та взуття:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><b>Повсякденний та домашній одяг:</b> Халати, спортивні костюми, футболки, м’які тапочки, піжама або нічна сорочка.</li>
+                                <li><b>Верхній одяг та взуття для прогулянок:</b> Зручний одяг відповідно до пори року, взуття, головний убір.</li>
+                                <li><b>Білизна та шкарпетки:</b> Мінімум 2 комплекти особистої білизни та 3-5 пар бавовняних шкарпеток. Для холодної пори року — теплі вовняні шкарпетки.</li>
+                                <li><b>Святкове вбрання:</b> Бажане святкове вбрання для участі у регулярних святкових заходах.</li>
+                            </ul>
+
+                            <p class="font-semibold text-lg text-indigo-700 mt-4 mb-2">Гігієна та спеціальні засоби:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><b>Особиста гігієна:</b> Шампунь, зубна щітка, ватяні палички, носові хустки, ножиці для нігтів. (Рідке мило має бути з дозатором, кускове — з мильницею).</li>
+                                <li><b>Для чоловіків:</b> Одноразові станки, піна та лосьйон для гоління.</li>
+                                <li><b>Спеціалізовані засоби (за потреби):</b> Памперси/прокладки, одноразові пелюшки (90x60, 90x120), пінка для догляду за лежачими хворими, вологі та неткані віскозні серветки.</li>
+                                <li><b>Для протезів:</b> Спеціальний контейнер для зубних протезів.</li>
+                            </ul>
+
+                            <p class="font-semibold text-lg text-indigo-700 mt-4 mb-2">Ліки та медичні прилади:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><b>Ліки:</b> Усі препарати, які приймає особа за призначенням лікаря, з <b>докладною схемою прийому</b> (передається адміністратору).</li>
+                                <li><b>Прилади:</b> Глюкометр та тест-смужки (якщо особа має діабет).</li>
+                            </ul>
+
+                            <p class="font-semibold text-lg text-indigo-700 mt-4 mb-2">Дозвілля та зв'язок:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4">
+                                <li><b>Улюблені речі:</b> Книги, в'язання, настільні ігри.</li>
+                                <li><b>Засоби зв'язку:</b> Смартфон, планшет, ноутбук (адаптовані під потреби постояльця: великі кнопки, контрастний дисплей).</li>
+                                <li><b>Допоміжні засоби пересування:</b> Власні зручні коляска, ходунки або тростина (хоча пансіонат надає свої).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 8. Contact/CTA Section with Form -->
+        <section id="contact" class="py-16 md:py-24 bg-indigo-700 text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Отримайте Детальну Консультацію</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl text-gray-800">
+                        <h3 class="text-2xl font-semibold mb-6 text-indigo-800">Залиште Вашу Заявку</h3>
+                        <!-- ПРИМІТКА: Ця форма є лише HTML-макетом і НЕ надсилає дані. Для відправки даних потрібен бекенд або сервіс. -->
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ваше Ім'я</label>
+                                <input type="text" id="name" name="name" required
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Іван">
+                            </div>
+                            <div class="mb-4">
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Телефон</label>
+                                <input type="tel" id="phone" name="phone" required
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="+38 (XXX) XXX XX XX">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Коментар (наприклад, стан здоров'я)</label>
+                                <textarea id="message" name="message" rows="3"
+                                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Я шукаю догляд для батька після інсульту..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:scale-[1.01]">
+                                Надіслати Заявку
+                            </button>
+                            <p id="form-message" class="mt-4 text-center text-sm hidden"></p>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info and Map -->
+                    <div class="md:p-8 space-y-8">
+                        <h3 class="text-2xl font-semibold text-white">Наші Контакти</h3>
+                        <div class="space-y-4">
+                            <!-- Phone -->
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                                <a href="tel:+380506800989" class="text-xl font-medium hover:underline">+380 (50) 680-0989</a>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
+                                <a href="mailto:info@ikigai.com.ua" class="text-xl font-medium hover:underline">info@ikigai.com.ua</a>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-indigo-300 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.899a2 2 0 01-2.828 0L6.343 16.657A8 8 0 1117.657 16.657z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <p class="text-xl">
+                                    Київська область, Обухівський р-н, <br>
+                                    село Жуківці, вул. Тараса Шевченка 13.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Google Map Embed -->
+                        <div class="w-full h-64 rounded-lg shadow-inner mt-6">
+                            <!-- Вбудований адаптивний iframe з Google Maps на основі наданого посилання -->
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2560.515358713148!2d30.770419300000004!3d50.076637299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4918aaa0d33d7%3A0x924e1317589bf2f2!2z0IbQutGW0pHQsNC5!5e0!3m2!1suk!2sua!4v1764018755994!5m2!1suk!2sua"
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                class="rounded-lg">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 9. Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2025 Пансіонат для літніх людей «Ікіґай». Усі права захищені.</p>
+            <p class="mt-2">Створено з турботою. Життя, що має сенс.</p>
+        </div>
+    </footer>
+
+    <!-- 10. Lightbox/Modal for Full-Screen Image Viewing -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-[9999] flex items-center justify-center hidden transition-opacity duration-300" onclick="closeLightbox(event)">
+        
+        <!-- Close Button -->
+        <button id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl font-light hover:text-indigo-400 transition duration-300 p-2 focus:outline-none">
+            &times;
+        </button>
+
+        <!-- Previous Button -->
+        <button id="lightbox-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl opacity-70 hover:opacity-100 transition duration-300 p-4 focus:outline-none hidden md:block">
+            &lsaquo;
+        </button>
+
+        <!-- Image Container -->
+        <div class="max-w-[90vw] max-h-[90vh] p-4">
+            <img id="lightbox-image" src="" alt="Gallery Image" class="max-w-full max-h-full rounded-lg shadow-2xl object-contain">
+        </div>
+
+        <!-- Next Button -->
+        <button id="lightbox-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl opacity-70 hover:opacity-100 transition duration-300 p-4 focus:outline-none hidden md:block">
+            &rsaquo;
+        </button>
+    </div>
+
+    <!-- JavaScript for smooth scrolling, mobile menu toggle, Lightbox, and Accordion -->
+    <script>
+        // === ACCORDION LOGIC ===
+
+        /**
+         * Керує відкриттям/закриттям елементів акордеону.
+         * Забезпечує, що одночасно відкрита лише одна відповідь.
+         * @param {HTMLElement} currentItem - Елемент, на який клікнули (обгортка .accordion-item).
+         */
+        function toggleAccordion(currentItem) {
+            const isExpanded = currentItem.getAttribute('aria-expanded') === 'true';
+            const content = currentItem.querySelector('.accordion-content');
+            const items = document.querySelectorAll('.accordion-item');
+
+            // 1. Закрити всі інші елементи
+            items.forEach(item => {
+                if (item !== currentItem && item.getAttribute('aria-expanded') === 'true') {
+                    item.setAttribute('aria-expanded', 'false');
+                    // Встановлюємо висоту 0 при закритті
+                    item.querySelector('.accordion-content').style.maxHeight = '0';
+                }
+            });
+
+            // 2. Відкрити або закрити поточний елемент
+            if (isExpanded) {
+                currentItem.setAttribute('aria-expanded', 'false');
+                content.style.maxHeight = '0';
+            } else {
+                currentItem.setAttribute('aria-expanded', 'true');
+                
+                // Використовуємо стабільне, але велике значення maxHeight, 
+                // щоб гарантувати, що вміст не обрізається, і при цьому зберігаємо анімацію.
+                content.style.maxHeight = '1500px'; 
+            }
+        }
+
+
+        // === LIGHTBOX LOGIC ===
+        
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightbox-image');
+        
+        // Отримуємо всі посилання на зображення з HTML-структури (видаляємо зайві параметри запиту, як-от ?text=...)
+        const imageSources = Array.from(document.querySelectorAll('#gallery-container img')).map(img => img.src.replace(/\?.*$/, ''));
+        
+        let currentImageIndex = 0;
+        
+        // Функція для відображення зображення в лайтбоксі
+        function showImage(index) {
+            if (index >= 0 && index < imageSources.length) {
+                currentImageIndex = index;
+                lightboxImage.src = imageSources[currentImageIndex];
+            }
+        }
+
+        // Функція для відкриття лайтбоксу
+        function openLightbox(index) {
+            showImage(index);
+            lightbox.classList.remove('hidden');
+            // Приховуємо скролл основної сторінки, поки відкритий лайтбокс
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Функція для переходу до наступного зображення
+        function nextImage() {
+            let newIndex = currentImageIndex + 1;
+            if (newIndex >= imageSources.length) {
+                newIndex = 0; // Зациклення
+            }
+            showImage(newIndex);
+        }
+
+        // Функція для переходу до попереднього зображення
+        function prevImage() {
+            let newIndex = currentImageIndex - 1;
+            if (newIndex < 0) {
+                newIndex = imageSources.length - 1; // Зациклення
+            }
+            showImage(newIndex);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+
+            // Mobile Menu Toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth Scrolling (for all internal links)
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Lightbox: Add click listener to each gallery thumbnail
+            document.querySelectorAll('#gallery-container .gallery-item').forEach((item, index) => {
+                // Додаємо клас gallery-thumb та data-index для коректної роботи JS-логіки
+                const thumbWrapper = item.closest('div');
+                thumbWrapper.classList.add('gallery-thumb');
+                thumbWrapper.setAttribute('data-index', index);
+                
+                thumbWrapper.addEventListener('click', function() {
+                    openLightbox(index);
+                });
+            });
+            
+            // Lightbox: Add click listeners to navigation buttons and CLOSE button
+            document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+            
+            document.getElementById('lightbox-prev').addEventListener('click', function(e) {
+                e.stopPropagation(); // Важливо, щоб клік по кнопці не закрив лайтбокс
+                prevImage();
+            });
+            document.getElementById('lightbox-next').addEventListener('click', function(e) {
+                e.stopPropagation(); // Важливо, щоб клік по кнопці не закрив лайтбокс
+                nextImage();
+            });
+
+
+            // Lightbox: Close on Escape key press
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                    // Викликаємо closeLightbox без аргументів
+                    closeLightbox(); 
+                }
+            });
+
+            // Handle Contact Form Submission (Frontend only simulation)
+            contactForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                // Тут має бути код для відправки даних на сервер (наприклад, через Firebase Functions або інший бекенд)
+
+                // Симуляція успішної відправки
+                formMessage.textContent = 'Дякуємо! Вашу заявку прийнято. Ми зв\'яжемося з Вами найближчим часом.';
+                formMessage.classList.remove('hidden', 'text-red-500');
+                formMessage.classList.add('text-green-600');
+                contactForm.reset();
+                
+                // Приховуємо повідомлення через 5 секунд
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+
+            });
+        });
+        
+        // Фінальне налаштування функції closeLightbox для коректної роботи з keydown
+        function closeLightbox(event) {
+            // Якщо події немає (виклик через Esc) або якщо ціль - це сам лайтбокс, або кнопка закриття, закриваємо
+            if (!event || event.target.id === 'lightbox' || event.target.id === 'lightbox-close') {
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+    </script>
+</body>
+</html>
