@@ -21,51 +21,52 @@
     <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon" sizes="32x32">
     <link rel="icon" href="assets/favicon-192x192.png" type="image/x-icon" sizes="192x192">
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXJ8YST0W7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-HXJ8YST0W7');
+    </script>
+
+    <!-- Custom Tailwind CSS loading -->
+    <link href="css/tailwind.css" rel="stylesheet">
 
     <style>
-        /* Стилі для шрифту та основні налаштування */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        /* Кастомні стилі для форми та галереї */
         .shadow-hero {
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
         }
         .hero-bg {
-            /* Використовуємо реальний шлях до зображення від користувача */
             background-image: url('assets/images/InsideView.jpg');
             background-size: cover;
             background-position: center;
         }
         .gallery-item {
-            aspect-ratio: 4/3; /* Забезпечує однакову пропорцію для всіх зображень */
+            aspect-ratio: 4/3;
             object-fit: cover;
             transition: transform 0.3s ease;
-            cursor: pointer; /* Додаємо курсор для підказки, що елемент клікабельний */
+            cursor: pointer;
         }
         .gallery-item:hover {
             transform: scale(1.03);
         }
-        /* Стилі для Лайтбоксу */
         #lightbox.hidden {
             display: none;
         }
-        /* Стилі для Акордеону (для надійної роботи) */
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            /* Додаємо плавний перехід для висоти та відступів */
             transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; 
             padding-top: 0;
             padding-bottom: 0;
         }
         .accordion-item[aria-expanded="true"] .accordion-content {
-            /* При відкритті встановлюємо велике фіксоване значення, 
-               яке гарантовано перекриє вміст (1500px), та додаємо відступи. */
             max-height: 1500px;
             padding-top: 1rem;
             padding-bottom: 1rem;
@@ -79,6 +80,7 @@
     </style>
 
 </head>
+
 <body class="bg-gray-50 text-gray-800">
 
     <!-- 1. Header and Navigation -->
@@ -258,9 +260,9 @@
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9.247a18.237 18.237 0 011.666-1.5c.381-.376.804-.68 1.226-.979M10 20l4-4m-4 0l4 4m-4-10.25a7.5 7.5 0 10-.228 15.015M10 3.75a7.5 7.5 0 11.228 15.015"></path></svg>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-semibold text-gray-800">Безперебійний Зв'язок (Starlink)</h4>
+                                    <h4 class="text-xl font-semibold text-gray-800">Безперебійний Зв'язок</h4>
                                     <p class="text-gray-600">
-                                        <b>Starlink</b> гарантує швидкісний, надійний інтернет 24/7. Ваші рідні завжди зможуть зателефонувати чи скористатися відеозв'язком, а ви будете спокійні.
+                                        Starlink гарантує швидкісний, <b>надійний інтернет 24/7</b>. Ваші рідні завжди зможуть зателефонувати чи скористатися відеозв'язком, а ви будете спокійні.
                                     </p>
                                 </div>
                             </li>
@@ -269,7 +271,7 @@
 
                     <!-- Image Placeholder -->
                     <div class="rounded-xl shadow-2xl overflow-hidden flex items-center justify-center p-8 bg-white h-full">
-                        <img src="assets/logo.png" alt="Логотип Ікіґай" class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
+                        <img src="assets/logoFull.jpg" alt="Логотип Ікіґай" class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
                     </div>
                 </div>
             </div>
@@ -476,24 +478,23 @@
                     <!-- Contact Form -->
                     <div class="bg-white p-8 rounded-xl shadow-2xl text-gray-800">
                         <h3 class="text-2xl font-semibold mb-6 text-indigo-800">Залиште Вашу Заявку</h3>
-                        <!-- ПРИМІТКА: Ця форма є лише HTML-макетом і НЕ надсилає дані. Для відправки даних потрібен бекенд або сервіс. -->
                         <form id="contact-form">
                             <div class="mb-4">
                                 <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ваше Ім'я</label>
-                                <input type="text" id="name" name="name" required
-                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Іван">
+                                <input type="text" id="name" name="name" required autocomplete
+                                       class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Тарас">
                             </div>
                             <div class="mb-4">
                                 <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Телефон</label>
-                                <input type="tel" id="phone" name="phone" required
+                                <input type="tel" id="phone" name="phone" required autocomplete
                                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="+38 (XXX) XXX XX XX">
                             </div>
                             <div class="mb-6">
                                 <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Коментар (наприклад, стан здоров'я)</label>
-                                <textarea id="message" name="message" rows="3"
+                                <textarea id="message" name="message" rows="7" required
                                           class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-150" placeholder="Я шукаю догляд для батька після інсульту..."></textarea>
                             </div>
-                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:scale-[1.01]">
+                            <button type="submit" id="submit-button" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-lg transition duration-300 transform hover:scale-[1.01]">
                                 Надіслати Заявку
                             </button>
                             <p id="form-message" class="mt-4 text-center text-sm hidden"></p>
@@ -515,6 +516,12 @@
                                 <svg class="w-6 h-6 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-2 4v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"></path></svg>
                                 <a href="mailto:info@ikigai.com.ua" class="text-xl font-medium hover:underline">info@ikigai.com.ua</a>
                             </div>
+                            
+                            <!-- Facebook Link (NEW) -->
+                            <div class="flex items-start space-x-3">
+                                <svg class="w-6 h-6 text-indigo-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.498v-9.294H9.682V11.2h3.141V8.567c0-3.132 1.889-4.856 4.717-4.856 1.33 0 2.47.24 2.802.34v3.08l-1.821.002c-1.424 0-1.701.677-1.701 1.67v2.186h3.456l-.587 3.707h-2.869v9.294h6.115C23.407 24 24 23.407 24 22.675V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                                <a href="https://www.facebook.com/share/1Zg54vec7w/" target="_blank" rel="noopener noreferrer" class="text-xl font-medium hover:underline">Наша сторінка у Facebook</a>
+                            </div>
 
                             <!-- Location -->
                             <div class="flex items-start space-x-3">
@@ -528,7 +535,6 @@
 
                         <!-- Google Map Embed -->
                         <div class="w-full h-64 rounded-lg shadow-inner mt-6">
-                            <!-- Вбудований адаптивний iframe з Google Maps на основі наданого посилання -->
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2560.515358713148!2d30.770419300000004!3d50.076637299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4918aaa0d33d7%3A0x924e1317589bf2f2!2z0IbQutGW0pHQsNC5!5e0!3m2!1suk!2sua!4v1764018755994!5m2!1suk!2sua"
                                 width="100%" 
@@ -582,11 +588,6 @@
     <script>
         // === ACCORDION LOGIC ===
 
-        /**
-         * Керує відкриттям/закриттям елементів акордеону.
-         * Забезпечує, що одночасно відкрита лише одна відповідь.
-         * @param {HTMLElement} currentItem - Елемент, на який клікнули (обгортка .accordion-item).
-         */
         function toggleAccordion(currentItem) {
             const isExpanded = currentItem.getAttribute('aria-expanded') === 'true';
             const content = currentItem.querySelector('.accordion-content');
@@ -596,7 +597,6 @@
             items.forEach(item => {
                 if (item !== currentItem && item.getAttribute('aria-expanded') === 'true') {
                     item.setAttribute('aria-expanded', 'false');
-                    // Встановлюємо висоту 0 при закритті
                     item.querySelector('.accordion-content').style.maxHeight = '0';
                 }
             });
@@ -607,9 +607,6 @@
                 content.style.maxHeight = '0';
             } else {
                 currentItem.setAttribute('aria-expanded', 'true');
-                
-                // Використовуємо стабільне, але велике значення maxHeight, 
-                // щоб гарантувати, що вміст не обрізається, і при цьому зберігаємо анімацію.
                 content.style.maxHeight = '1500px'; 
             }
         }
@@ -620,12 +617,11 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         
-        // Отримуємо всі посилання на зображення з HTML-структури (видаляємо зайві параметри запиту, як-от ?text=...)
+        // Отримуємо всі посилання на зображення з HTML-структури
         const imageSources = Array.from(document.querySelectorAll('#gallery-container img')).map(img => img.src.replace(/\?.*$/, ''));
         
         let currentImageIndex = 0;
         
-        // Функція для відображення зображення в лайтбоксі
         function showImage(index) {
             if (index >= 0 && index < imageSources.length) {
                 currentImageIndex = index;
@@ -633,15 +629,12 @@
             }
         }
 
-        // Функція для відкриття лайтбоксу
         function openLightbox(index) {
             showImage(index);
             lightbox.classList.remove('hidden');
-            // Приховуємо скролл основної сторінки, поки відкритий лайтбокс
             document.body.style.overflow = 'hidden';
         }
 
-        // Функція для переходу до наступного зображення
         function nextImage() {
             let newIndex = currentImageIndex + 1;
             if (newIndex >= imageSources.length) {
@@ -650,7 +643,6 @@
             showImage(newIndex);
         }
 
-        // Функція для переходу до попереднього зображення
         function prevImage() {
             let newIndex = currentImageIndex - 1;
             if (newIndex < 0) {
@@ -664,6 +656,7 @@
             const mobileMenu = document.getElementById('mobile-menu');
             const contactForm = document.getElementById('contact-form');
             const formMessage = document.getElementById('form-message');
+            const submitButton = document.getElementById('submit-button');
 
             // Mobile Menu Toggle
             mobileMenuButton.addEventListener('click', () => {
@@ -682,7 +675,6 @@
 
             // Lightbox: Add click listener to each gallery thumbnail
             document.querySelectorAll('#gallery-container .gallery-item').forEach((item, index) => {
-                // Додаємо клас gallery-thumb та data-index для коректної роботи JS-логіки
                 const thumbWrapper = item.closest('div');
                 thumbWrapper.classList.add('gallery-thumb');
                 thumbWrapper.setAttribute('data-index', index);
@@ -696,11 +688,11 @@
             document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
             
             document.getElementById('lightbox-prev').addEventListener('click', function(e) {
-                e.stopPropagation(); // Важливо, щоб клік по кнопці не закрив лайтбокс
+                e.stopPropagation();
                 prevImage();
             });
             document.getElementById('lightbox-next').addEventListener('click', function(e) {
-                e.stopPropagation(); // Важливо, щоб клік по кнопці не закрив лайтбокс
+                e.stopPropagation();
                 nextImage();
             });
 
@@ -708,34 +700,67 @@
             // Lightbox: Close on Escape key press
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
-                    // Викликаємо closeLightbox без аргументів
                     closeLightbox(); 
                 }
             });
 
-            // Handle Contact Form Submission (Frontend only simulation)
-            contactForm.addEventListener('submit', function (e) {
+            // === Handle Contact Form Submission (Using Firebase Function) ===
+            contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
                 
-                // Тут має бути код для відправки даних на сервер (наприклад, через Firebase Functions або інший бекенд)
+                submitButton.disabled = true;
+                submitButton.textContent = 'Надсилання...';
+                formMessage.classList.add('hidden');
+                formMessage.classList.remove('text-green-600', 'text-red-500');
 
-                // Симуляція успішної відправки
-                formMessage.textContent = 'Дякуємо! Вашу заявку прийнято. Ми зв\'яжемося з Вами найближчим часом.';
-                formMessage.classList.remove('hidden', 'text-red-500');
-                formMessage.classList.add('text-green-600');
-                contactForm.reset();
-                
-                // Приховуємо повідомлення через 5 секунд
-                setTimeout(() => {
-                    formMessage.classList.add('hidden');
-                }, 5000);
+                // Отримуємо дані форми
+                const formData = new FormData(contactForm);
+                const payload = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    message: formData.get('message')
+                };
 
+                // URL для виклику Firebase Function.
+                // Використовуємо відносний шлях, оскільки ми додали rewrite у firebase.json
+                const functionUrl = '/submitForm'; 
+
+                try {
+                    const response = await fetch(functionUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        formMessage.textContent = data.message || 'Дякуємо! Вашу заявку прийнято та надіслано на пошту.';
+                        formMessage.classList.remove('hidden');
+                        formMessage.classList.add('text-green-600');
+                        contactForm.reset();
+                    } else {
+                        throw new Error(data.message || 'Помилка відправки. Спробуйте пізніше.');
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    formMessage.textContent = 'Помилка відправки заявки. Перевірте консоль для деталей.';
+                    formMessage.classList.remove('hidden');
+                    formMessage.classList.add('text-red-500');
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Надіслати Заявку';
+                    // Приховуємо повідомлення через 5 секунд
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                    }, 5000);
+                }
             });
         });
         
-        // Фінальне налаштування функції closeLightbox для коректної роботи з keydown
         function closeLightbox(event) {
-            // Якщо події немає (виклик через Esc) або якщо ціль - це сам лайтбокс, або кнопка закриття, закриваємо
             if (!event || event.target.id === 'lightbox' || event.target.id === 'lightbox-close') {
                 lightbox.classList.add('hidden');
                 document.body.style.overflow = '';

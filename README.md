@@ -27,11 +27,22 @@ This project focuses on providing clear, accessible information for family membe
 The project follows a standard structure optimized for Firebase deployment:
 ```
 /
+├── functions/
+│   ├── index.js            # Code for communicating with Firebase
+│   ├── package-lock.json   # Node modules lock
+│   └── package.json        # Dependencies file for functions
 ├── public/
-│   ├── index.html          # Main landing page file
-│   └── assets/             # Directory for images and other static files
+│   ├── assets/             # Directory for images and other static files
+│   ├── css/                # Directory for CSS
+│   ├── 404.html            # 404 page not found file
+│   └── index.html          # Main landing page file
+├── src/
+│   └── inputs.css          # Instructions for Tailwindcss
 ├── LICENSE                 # MIT License
 ├── README.md               # This
+├── package-lock.json       # Node modules lock
+├── package.json            # Dependencies file for Tailwindcss builder
+├── tailwind.config.js      # File with folders list for Tailwindcss builder
 ├── firebase.json           # Firebase Hosting configuration file
 └── .firebaserc             # Firebase project configuration
 ```
@@ -48,9 +59,20 @@ cd ikigai-landing
 ```
 2. **Add Images:** Replace the placeholder images in `index.html` with your actual assets (preferably place them in the `public/assets/images/` directory).
 
-3. **Deployment (Firebase):**
+3. **Install modules for contact form:**
+```bash
+cd functions
+npm install
+cd ..
+npm install
+npm run init-tailwind
+```
+Then follow the instructions to set Google Cloud secrets as described in `functions/index.js`.
+
+4. **Deployment (Firebase):**
 * Ensure you have the Firebase CLI installed.
 * Initialize your project: `firebase init` (select Hosting and set the public directory to `public`).
+* Create Tailwindcss CSS: `npm run build` (if there were some changes in html styles)
 * Deploy: `firebase deploy`
 
 ---
