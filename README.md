@@ -17,8 +17,8 @@ This project focuses on providing clear, accessible information for family membe
 ## Technology Stack
 
 * **HTML5:** Semantic structure.
-* **Tailwind CSS (via CDN):** Utility-first framework for fast, responsive styling.
-* **JavaScript:** Minor scripting for smooth scrolling and mobile navigation toggle.
+* **Tailwind CSS (minify):** Utility-first framework for fast, responsive styling.
+* **JavaScript:** Minor scripting for smooth scrolling, images gallery, mobile navigation toggle and contact form.
 * **Hosting:** Designed for easy deployment on Firebase Hosting.
 
 
