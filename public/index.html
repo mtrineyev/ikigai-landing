@@ -22,7 +22,7 @@
     <link rel="icon" href="assets/favicon-192x192.png" type="image/x-icon" sizes="192x192">
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXJ8YST0W7"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-HXJ8YST0W7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -45,11 +45,6 @@
         }
         .shadow-hero {
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-        }
-        .hero-bg {
-            background-image: url('assets/images/InsideView.jpg');
-            background-size: cover;
-            background-position: center;
         }
         .gallery-item {
             aspect-ratio: 4/3;
@@ -149,7 +144,7 @@
             </nav>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition duration-300">
+            <button id="mobile-menu-button" aria-label="Відкрити меню" class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition duration-300">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
@@ -166,8 +161,20 @@
 
     <main>
         <!-- 2. Hero Section -->
-        <section id="hero" class="hero-bg bg-indigo-700 text-white py-24 md:py-32">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-indigo-900/60 p-8 md:p-12 rounded-xl shadow-2xl">
+        <section id="hero" class="relative text-white py-24 md:py-32 overflow-hidden">
+            
+            <div class="absolute inset-0 w-full h-full -z-10">
+                <picture>
+                    <source srcset="assets/images/InsideView.webp" type="image/webp">
+                    <img src="assets/images/InsideView.jpg" 
+                        alt="Інтер'єр пансіонату Ікіґай" 
+                        class="w-full h-full object-cover"
+                        fetchpriority="high">
+                </picture>
+                <div class="absolute inset-0 bg-gray-900/20"></div>
+            </div>
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-indigo-900/80 p-8 md:p-12 rounded-xl shadow-2xl backdrop-blur-sm">
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
                     Приватний пансіонат «Ікіґай»:<br>
                     Життя, що має сенс.
@@ -178,7 +185,7 @@
                 <a href="#contact" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-hero text-lg">
                     Отримати консультацію
                 </a>
-                <p class="mt-4 text-sm font-light text-indigo-200">
+                <p class="mt-4 text-sm font-light text-indigo-100">
                     Або зателефонуйте: +380 (50) 680-0989
                 </p>
             </div>
@@ -319,7 +326,11 @@
 
                     <!-- Image Placeholder -->
                     <div class="rounded-xl shadow-2xl overflow-hidden flex items-center justify-center p-8 bg-white h-full">
-                        <img src="assets/logoFull.jpg" alt="Логотип Ікіґай" class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
+                        <img src="assets/logoFull.jpg"
+                            width="500" height="500"
+                            loading="lazy"
+                            alt="Логотип Ікіґай"
+                            class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
                     </div>
                 </div>
             </div>
@@ -337,65 +348,81 @@
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="0">
                         <picture>
                             <source srcset="assets/images/SingleRoom.webp" type="image/webp">
-                            <img src="assets/images/SingleRoom.jpg" loading="lazy" 
-                                 alt="Затишна одномісна кімната в приватному пансіонаті Ікіґай, Київська область" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/SingleRoom.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Затишна одномісна кімната в приватному пансіонаті Ікіґай, Київська область" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="1">
                         <picture>
                             <source srcset="assets/images/Territory.webp" type="image/webp">
-                            <img src="assets/images/Territory.jpg" loading="lazy" 
-                                 alt="Озеленена територія будинку престарілих в с. Жуківці, Обухівський район" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/Territory.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Озеленена територія будинку престарілих в с. Жуківці, Обухівський район" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="2">
                         <picture>
                             <source srcset="assets/images/LivingRoom.webp" type="image/webp">
-                            <img src="assets/images/LivingRoom.jpg" loading="lazy" 
-                                 alt="Простора вітальня для спілкування в геріатричному пансіонаті під Києвом" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/LivingRoom.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Простора вітальня для спілкування в геріатричному пансіонаті під Києвом" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="3">
                         <picture>
                             <source srcset="assets/images/Lunch.webp" type="image/webp">
-                            <img src="assets/images/Lunch.jpg" loading="lazy" 
-                                 alt="Збалансоване харчування в пансіонаті для літніх людей" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/Lunch.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Збалансоване харчування в пансіонаті для літніх людей" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="4">
                         <picture>
                             <source srcset="assets/images/Concert.webp" type="image/webp">
-                            <img src="assets/images/Concert.jpg" loading="lazy" 
-                                 alt="Розважальні заходи та свята для підопічних пансіонату в Обуховському районі" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/Concert.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Розважальні заходи та свята для підопічних пансіонату в Обуховському районі" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="5">
                         <picture>
                             <source srcset="assets/images/ActiveResting.webp" type="image/webp">
-                            <img src="assets/images/ActiveResting.jpg" loading="lazy" 
-                                 alt="Догляд за інвалідами та дозвілля на свіжому повітрі, Київська область" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/ActiveResting.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Догляд за інвалідами та дозвілля на свіжому повітрі, Київська область" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="6">
                         <picture>
                             <source srcset="assets/images/Terrase.webp" type="image/webp">
-                            <img src="assets/images/Terrase.jpg" loading="lazy" 
-                                 alt="Літня тераса для відпочинку в приватному пансіонаті Ікіґай" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/Terrase.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Літня тераса для відпочинку в приватному пансіонаті Ікіґай" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="7">
                         <picture>
                             <source srcset="assets/images/Walking.webp" type="image/webp">
-                            <img src="assets/images/Walking.jpg" loading="lazy" 
-                                 alt="Реабілітація після інсульту: прогулянки з доглядальницею" 
-                                 class="w-full gallery-item">
+                            <img src="assets/images/Walking.jpg"
+                                width="800" height="600"
+                                loading="lazy" 
+                                alt="Реабілітація після інсульту: прогулянки з доглядальницею" 
+                                class="w-full gallery-item">
                         </picture>
                     </div>
                 </div>
@@ -650,12 +677,12 @@
     <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-[9999] flex items-center justify-center hidden transition-opacity duration-300" onclick="closeLightbox(event)">
         
         <!-- Close Button -->
-        <button id="lightbox-close" class="absolute top-4 right-4 text-white text-4xl font-light hover:text-indigo-400 transition duration-300 p-2 focus:outline-none">
+        <button id="lightbox-close" aria-label="Закрити галерею" class="absolute top-4 right-4 text-white text-4xl font-light hover:text-indigo-400 transition duration-300 p-2 focus:outline-none">
             &times;
         </button>
 
         <!-- Previous Button -->
-        <button id="lightbox-prev" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl opacity-70 hover:opacity-100 transition duration-300 p-4 focus:outline-none hidden md:block">
+        <button id="lightbox-prev" aria-label="Попередня світлина" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-5xl opacity-70 hover:opacity-100 transition duration-300 p-4 focus:outline-none hidden md:block">
             &lsaquo;
         </button>
 
@@ -665,7 +692,7 @@
         </div>
 
         <!-- Next Button -->
-        <button id="lightbox-next" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl opacity-70 hover:opacity-100 transition duration-300 p-4 focus:outline-none hidden md:block">
+        <button id="lightbox-next" aria-label="Наступна світлина" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-5xl opacity-70 hover:opacity-100 transition duration-300 p-4 focus:outline-none hidden md:block">
             &rsaquo;
         </button>
     </div>
