@@ -59,17 +59,27 @@ cd ikigai-landing
 ```
 2. **Add Images:** Replace the placeholder images in `index.html` with your actual assets (preferably place them in the `public/assets/images/` directory).
 
-3. **Install modules for contact form:**
+3. **Install modules for Tailwind and for functions:**
+It's needed for local deploy.
 ```bash
-cd functions
+cd ./functions/
 npm install
 cd ..
 npm install
 npm run init-tailwind
 ```
-Then follow the instructions to set Google Cloud secrets as described in `functions/index.js`.
 
-4. **Deployment (Firebase):**
+4. **Make sure your Google Cloud project have secrets:**
+
+| Secret Name | Value |
+| :--- | :--- |
+| SMTP_HOST | `smtp.eu.mailgun.org` or other SMTP service |
+| SMTP_PORT | 465 |
+| SMTP_USER | Login for MailGun or other SMTP service |
+| SMTP_PASS | Password for SMTP user |
+| RECEIVING_EMAIL | List of reciepients, devided by commas |
+
+5. **Deployment (Firebase):**
 * Ensure you have the Firebase CLI installed.
 * Initialize your project: `firebase init` (select Hosting and set the public directory to `public`).
 * Create Tailwindcss CSS: `npm run build` (if there were some changes in html styles)
