@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": "v22.21.1"
+    "node": "22"
   },
   "dependencies": {
     "@google-cloud/firestore": "^8.0.0",
