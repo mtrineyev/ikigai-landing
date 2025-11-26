@@ -84,8 +84,9 @@ export const submitForm = onRequest({
                     <li><strong>Ім'я:</strong> ${name}</li>
                     <li><strong>Телефон:</strong> ${phone}</li>
                     <li><strong>Коментар:</strong> ${message || 'Немає коментаря'}</li>
-                    <li><strong>Час:</strong> ${new Date().toLocaleString('uk-UA')}</li>
+                    <li><strong>Час:</strong> ${new Date().toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv' })}</li>
                 </ul>
+                <p>Будь ласка, зв'яжіться з клієнтом якнайшвидше.</p>
             `
         };
 
