@@ -33,8 +33,12 @@
     <!-- Custom Tailwind CSS loading -->
     <link href="css/tailwind.css" rel="stylesheet">
 
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
@@ -79,6 +83,49 @@
         }
     </style>
 
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "NursingHome", 
+        "name": "Приватний Пансіонат Ікіґай",
+        "image": "https://ikigai.com.ua/assets/logoFull.jpg",
+        "@id": "https://ikigai.com.ua",
+        "url": "https://ikigai.com.ua",
+        "telephone": "+380506800989",
+        "priceRange": "800-1200 UAH",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "вул. Тараса Шевченка 13",
+            "addressLocality": "с. Жуківці",
+            "addressRegion": "Київська область",
+            "postalCode": "08743", 
+            "addressCountry": "UA"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 50.076591,
+            "longitude": 30.7699769 
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+        },
+        "sameAs": [
+            "https://www.facebook.com/people/%D0%86%D0%BA%D1%96%D2%91%D0%B0%D0%B9/100072187789857/"
+        ]
+    }
+    </script>
 </head>
 
 <body class="bg-gray-50 text-gray-800">
@@ -122,7 +169,8 @@
         <section id="hero" class="hero-bg bg-indigo-700 text-white py-24 md:py-32">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-indigo-900/60 p-8 md:p-12 rounded-xl shadow-2xl">
                 <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-                    «Ікіґай»: Життя, що має сенс.
+                    Приватний пансіонат «Ікіґай»:<br>
+                    Життя, що має сенс.
                 </h1>
                 <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
                     Приватний пансіонат для літніх людей, де турбота, комфорт і безпека — наш головний пріоритет.
@@ -285,40 +333,70 @@
                 <p class="text-center text-lg text-gray-600 mb-10">
                     Натисніть на зображення, щоб побачити деталі.
                 </p>
-
-                <!-- Додані класи gallery-thumb та data-index для роботи Lightbox -->
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="gallery-container">
-                    <!-- Gallery Item 1 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="0">
-                        <img src="assets/images/SingleRoom.jpg" alt="Фото комфортної кімнати" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/SingleRoom.webp" type="image/webp">
+                            <img src="assets/images/SingleRoom.jpg" loading="lazy" 
+                                 alt="Затишна одномісна кімната в приватному пансіонаті Ікіґай, Київська область" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 2 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="1">
-                        <img src="assets/images/Territory.jpg" alt="Фото прогулянкової території" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/Territory.webp" type="image/webp">
+                            <img src="assets/images/Territory.jpg" loading="lazy" 
+                                 alt="Озеленена територія будинку престарілих в с. Жуківці, Обухівський район" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 3 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="2">
-                        <img src="assets/images/LivingRoom.jpg" alt="Фото спільної вітальні" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/LivingRoom.webp" type="image/webp">
+                            <img src="assets/images/LivingRoom.jpg" loading="lazy" 
+                                 alt="Простора вітальня для спілкування в геріатричному пансіонаті під Києвом" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 4 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="3">
-                        <img src="assets/images/Lunch.jpg" alt="Фото збалансованого харчування" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/Lunch.webp" type="image/webp">
+                            <img src="assets/images/Lunch.jpg" loading="lazy" 
+                                 alt="Збалансоване харчування в пансіонаті для літніх людей" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 5 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="4">
-                        <img src="assets/images/Concert.jpg" alt="Фото різдвяного концерту" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/Concert.webp" type="image/webp">
+                            <img src="assets/images/Concert.jpg" loading="lazy" 
+                                 alt="Розважальні заходи та свята для підопічних пансіонату в Обуховському районі" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 6 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="5">
-                        <img src="assets/images/ActiveResting.jpg" alt="Фото куточка для творчості" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/ActiveResting.webp" type="image/webp">
+                            <img src="assets/images/ActiveResting.jpg" loading="lazy" 
+                                 alt="Догляд за інвалідами та дозвілля на свіжому повітрі, Київська область" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 7 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="6">
-                        <img src="assets/images/Terrase.jpg" alt="Фото тераси для відпочинку" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/Terrase.webp" type="image/webp">
+                            <img src="assets/images/Terrase.jpg" loading="lazy" 
+                                 alt="Літня тераса для відпочинку в приватному пансіонаті Ікіґай" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
-                    <!-- Gallery Item 8 -->
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="7">
-                        <img src="assets/images/Walking.jpg" alt="Фото прогулянки з доглядальницею" class="w-full gallery-item">
+                        <picture>
+                            <source srcset="assets/images/Walking.webp" type="image/webp">
+                            <img src="assets/images/Walking.jpg" loading="lazy" 
+                                 alt="Реабілітація після інсульту: прогулянки з доглядальницею" 
+                                 class="w-full gallery-item">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -338,8 +416,12 @@
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
-                            <p>Ціна перебування в одномісному номері — <b>1200 грн./доба</b>.</p>
-                            <p class="mt-2">Ціна перебування в двомісному номері — <b>800 грн./доба</b>.</p>
+                            <p>Ціна перебування в нашому <b>геріатричному пансіонаті</b> залежить від типу розміщення:</p>
+                            <ul class="list-disc list-inside space-y-1 ml-4 mt-2">
+                                <li>Одномісний номер ("Люкс") — <b>1200 грн./доба</b>.</li>
+                                <li>Двомісний номер ("Стандарт") — <b>800 грн./доба</b>.</li>
+                            </ul>
+                            <p class="mt-2 text-sm">Ми пропонуємо лояльні умови для довгострокового проживання, що робить "Ікіґай" доступним варіантом серед приватних будинків престарілих Київської області.</p>
                         </div>
                     </div>
 
@@ -350,14 +432,13 @@
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
+                            <p class="mb-2">Базовий пакет включає повний спектр послуг для комфортного життя та, за необхідності, паліативної допомоги (формат хоспісу):</p>
                             <ul class="list-disc list-inside space-y-1 ml-4">
-                                <li>Цілодобовий нагляд</li>
-                                <li>П'ятиразове харчування</li>
-                                <li>Телевізор в номері</li>
-                                <li>Щоденний моніторинг стану здоров'я (вимірювання температури, тиску, огляд спеціалістом)</li>
-                                <li>Допомога в проведенні гігієнічних процедур</li>
-                                <li>Прання та прасування білизни та постілі</li>
-                                <li>Спілкування, турбота та розваги</li>
+                                <li>Цілодобовий нагляд та <b>догляд за інвалідами</b> будь-якої групи.</li>
+                                <li>П'ятиразове дієтичне харчування.</li>
+                                <li>Щоденний моніторинг здоров'я (тиск, температура, рівень цукру).</li>
+                                <li>Гігієнічний догляд (купання, стрижка, заміна білизни).</li>
+                                <li>Соціальна адаптація та психологічна підтримка.</li>
                             </ul>
                         </div>
                     </div>
@@ -369,12 +450,12 @@
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
-                            <p>Так. Додатково сплачуються:</p>
+                            <p>Так, окремо оплачуються спеціалізовані медичні послуги та товари:</p>
                             <ul class="list-disc list-inside space-y-1 ml-4 mt-2">
-                                <li>Траспортування резидента</li>
-                                <li>Особисті розхідні гігієнічні предмети (памперси, пелюшки, тощо)</li>
-                                <li>Ліки, які має приймати резидент, якщо вони були придбані за кошти пансіонату</li>
-                                <li>Додаткові медичні маніпуляції (уколи, крапельниці, тощо)</li>
+                                <li>Складна <b>реабілітація після інсульту</b> або травм (робота з реабілітологом).</li>
+                                <li>Індивідуальні медикаменти та памперси.</li>
+                                <li>Спеціалізоване транспортування лежачих хворих.</li>
+                                <li>Додаткові медичні маніпуляції (крапельниці, складні перев'язки).</li>
                             </ul>
                             <p class="mt-2 text-sm italic">Всі документи про сплату відповідних послуг/товарів надаються.</p>
                         </div>
@@ -525,7 +606,7 @@
                             <!-- Facebook Link (NEW) -->
                             <div class="flex items-start space-x-3">
                                 <svg class="w-6 h-6 text-indigo-300 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.498v-9.294H9.682V11.2h3.141V8.567c0-3.132 1.889-4.856 4.717-4.856 1.33 0 2.47.24 2.802.34v3.08l-1.821.002c-1.424 0-1.701.677-1.701 1.67v2.186h3.456l-.587 3.707h-2.869v9.294h6.115C23.407 24 24 23.407 24 22.675V1.325C24 .593 23.407 0 22.675 0z"/></svg>
-                                <a href="https://www.facebook.com/share/1Zg54vec7w/" target="_blank" rel="noopener noreferrer" class="text-xl font-medium hover:underline">Наша сторінка у Facebook</a>
+                                <a href="https://www.facebook.com/people/%D0%86%D0%BA%D1%96%D2%91%D0%B0%D0%B9/100072187789857/" target="_blank" rel="noopener noreferrer" class="text-xl font-medium hover:underline">Пансіонат Ікіґай у Facebook</a>
                             </div>
 
                             <!-- Location -->
@@ -541,12 +622,12 @@
                         <!-- Google Map Embed -->
                         <div class="w-full h-64 rounded-lg shadow-inner mt-6">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2560.515358713148!2d30.770419300000004!3d50.076637299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4918aaa0d33d7%3A0x924e1317589bf2f2!2z0IbQutGW0pHQsNC5!5e0!3m2!1suk!2sua!4v1764018755994!5m2!1suk!2sua"
-                                width="100%" 
-                                height="100%" 
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d640.1294938970561!2d30.76957442857869!3d50.07658829821278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4918aaa0d33d7%3A0x924e1317589bf2f2!2z0IbQutGW0pHQsNC5!5e0!3m2!1suk!2sua!4v1764188022755!5m2!1suk!2sua"
+                                width="100%"
+                                height="100%"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"
                                 class="rounded-lg">
                             </iframe>
@@ -662,6 +743,7 @@
             const contactForm = document.getElementById('contact-form');
             const formMessage = document.getElementById('form-message');
             const submitButton = document.getElementById('submit-button');
+            const trapField = document.getElementById('website-field');
 
             // Mobile Menu Toggle
             mobileMenuButton.addEventListener('click', () => {
