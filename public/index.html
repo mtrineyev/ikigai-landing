@@ -3,6 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" 
+          rel="stylesheet" 
+          media="print" 
+          onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Custom Tailwind CSS loading -->
+    <link rel="preload" href="css/tailwind.css" as="style">
+    <link href="css/tailwind.css" rel="stylesheet">
+   
     <!-- SEO & Metadata -->
     <title>Приватний Пансіонат для Літніх Людей "Ікіґай" | Догляд, Комфорт, Безпека</title>
     <meta name="description" content="«Ікіґай» — це приватний будинок для літніх людей, де поєднуються професійний цілодобовий догляд, збалансоване харчування та комфортне спілкування. Гарантія зв'язку (Starlink) та незалежності від відключень світла.">
@@ -18,7 +34,7 @@
     <meta property="og:url" content="https://ikigai.com.ua/">
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/favicon-32x32.png" type="image/x-icon" sizes="32x32">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="32x32">
     <link rel="icon" href="assets/favicon-192x192.png" type="image/x-icon" sizes="192x192">
 
     <!-- Google tag (gtag.js) -->
@@ -29,14 +45,6 @@
         gtag('js', new Date());
         gtag('config', 'G-HXJ8YST0W7');
     </script>
-
-    <!-- Custom Tailwind CSS loading -->
-    <link href="css/tailwind.css" rel="stylesheet">
-
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <style>
         body {
@@ -84,7 +92,7 @@
         "@context": "https://schema.org",
         "@type": "NursingHome", 
         "name": "Приватний Пансіонат Ікіґай",
-        "image": "https://ikigai.com.ua/assets/logoFull.jpg",
+        "image": "https://ikigai.com.ua/assets/logo.jpg",
         "@id": "https://ikigai.com.ua",
         "url": "https://ikigai.com.ua",
         "telephone": "+380506800989",
@@ -326,11 +334,14 @@
 
                     <!-- Image Placeholder -->
                     <div class="rounded-xl shadow-2xl overflow-hidden flex items-center justify-center p-8 bg-white h-full">
-                        <img src="assets/logoFull.jpg"
-                            width="500" height="500"
-                            loading="lazy"
-                            alt="Логотип Ікіґай"
-                            class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
+                        <picture>
+                            <source srcset="assets/logoFull.webp" type="image/webp">
+                            <img src="assets/logoFull.jpg"
+                                width="500" height="500"
+                                loading="lazy"
+                                alt="Логотип Ікіґай"
+                                class="w-auto h-auto max-w-[90%] max-h-[90%] object-contain">
+                        </picture>
                     </div>
                 </div>
             </div>
