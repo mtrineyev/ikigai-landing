@@ -182,7 +182,7 @@
                 <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
                     Приватний пансіонат для літніх людей, де турбота, комфорт і безпека — наш головний пріоритет.
                 </p>
-                <a href="#contact" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-hero text-lg">
+                <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 shadow-hero text-lg">
                     Отримати консультацію
                 </a>
                 <p class="mt-4 text-sm font-light text-indigo-100">
@@ -301,7 +301,7 @@
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-semibold text-gray-800">100% Енергетична Незалежність</h4>
+                                    <h3 class="text-xl font-semibold text-gray-800">100% Енергетична Незалежність</h3>
                                     <p class="text-gray-600">
                                         <b>Потужна акумуляторна батарея та генератор</b> забезпечують безперебійне живлення всього пансіонату. Відключення світла не вплинуть на комфорт, опалення та медичне обладнання.
                                     </p>
@@ -315,7 +315,7 @@
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9.247a18.237 18.237 0 011.666-1.5c.381-.376.804-.68 1.226-.979M10 20l4-4m-4 0l4 4m-4-10.25a7.5 7.5 0 10-.228 15.015M10 3.75a7.5 7.5 0 11.228 15.015"></path></svg>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-semibold text-gray-800">Безперебійний Зв'язок</h4>
+                                    <h3 class="text-xl font-semibold text-gray-800">Безперебійний Зв'язок</h3>
                                     <p class="text-gray-600">
                                         Starlink гарантує швидкісний, <b>надійний інтернет 24/7</b>. Ваші рідні завжди зможуть зателефонувати чи скористатися відеозв'язком, а ви будете спокійні.
                                     </p>
@@ -437,8 +437,10 @@
                 <div class="space-y-4">
                     
                     <!-- FAQ Item 1: Вартість послуг -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">
                             <span class="text-lg font-semibold text-gray-800 text-left">Скільки коштують послуги пансіонату?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -453,8 +455,10 @@
                     </div>
 
                     <!-- FAQ Item 2: Що входить до послуг -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">
                             <span class="text-lg font-semibold text-gray-800 text-left">Що входить до базового пакету послуг пансіонату?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -471,8 +475,10 @@
                     </div>
                     
                     <!-- FAQ Item 3: Додаткові послуги -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">
                             <span class="text-lg font-semibold text-gray-800 text-left">Чи є послуги, які сплачуються додатково?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
@@ -489,9 +495,10 @@
                     </div>
                     
                     <!-- FAQ Item 4: Мінімальний термін -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
-                            <span class="text-lg font-semibold text-gray-800 text-left">Який мінімальний термін перебування в пансіонаті?</span>
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">Який мінімальний термін перебування в пансіонаті?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -500,9 +507,10 @@
                     </div>
                     
                     <!-- FAQ Item 5: Допомога у переїзді -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
-                            <span class="text-lg font-semibold text-gray-800 text-left">У вас є досвід, як вмовити рідних скористатися послугами пансіонату?</span>
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">У вас є досвід, як вмовити рідних скористатися послугами пансіонату?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -511,9 +519,10 @@
                     </div>
                     
                     <!-- FAQ Item 6: Документи -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
-                            <span class="text-lg font-semibold text-gray-800 text-left">Які документи потрібно мати з собою при надходженні?</span>
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">Які документи потрібно мати з собою при надходженні?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -534,9 +543,10 @@
                     </div>
 
                     <!-- FAQ Item 7: Речі, які потрібно мати з собою -->
-                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item" aria-expanded="false">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none" onclick="toggleAccordion(this.closest('.accordion-item'))">
-                            <span class="text-lg font-semibold text-gray-800 text-left">Які речі та предмети необхідно взяти з собою?</span>
+                    <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                                aria-expanded="false"
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">Які речі та предмети необхідно взяти з собою?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -649,6 +659,7 @@
                         <!-- Google Map Embed -->
                         <div class="w-full h-64 rounded-lg shadow-inner mt-6">
                             <iframe
+                                title="Мапа проїзду до пансіонату Ікіґай"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d640.1294938970561!2d30.76957442857869!3d50.07658829821278!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4918aaa0d33d7%3A0x924e1317589bf2f2!2z0IbQutGW0pHQsNC5!5e0!3m2!1suk!2sua!4v1764188022755!5m2!1suk!2sua"
                                 width="100%"
                                 height="100%"
@@ -701,26 +712,35 @@
     <script>
         // === ACCORDION LOGIC ===
 
-        function toggleAccordion(currentItem) {
-            const isExpanded = currentItem.getAttribute('aria-expanded') === 'true';
+        function toggleAccordion(button) {
+            // Отримуємо батьківський елемент (item)
+            const currentItem = button.closest('.accordion-item');
             const content = currentItem.querySelector('.accordion-content');
-            const items = document.querySelectorAll('.accordion-item');
-
-            // 1. Закрити всі інші елементи
-            items.forEach(item => {
-                if (item !== currentItem && item.getAttribute('aria-expanded') === 'true') {
-                    item.setAttribute('aria-expanded', 'false');
-                    item.querySelector('.accordion-content').style.maxHeight = '0';
+            
+            // Перевіряємо статус через кнопку (а не div)
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // 1. Закриваємо всі відкриті, крім поточного
+            document.querySelectorAll('.accordion-item button[aria-expanded="true"]').forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    // Знаходимо контент сусіда
+                    otherButton.closest('.accordion-item').querySelector('.accordion-content').style.maxHeight = '0';
+                    // Повертаємо іконку сусіда
+                    otherButton.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
                 }
             });
 
-            // 2. Відкрити або закрити поточний елемент
-            if (isExpanded) {
-                currentItem.setAttribute('aria-expanded', 'false');
-                content.style.maxHeight = '0';
+            // 2. Перемикаємо поточний
+            button.setAttribute('aria-expanded', !isExpanded);
+            
+            // Логіка CSS transitions (мінімізуємо reflow, змінюючи лише maxHeight)
+            if (!isExpanded) {
+                content.style.maxHeight = content.scrollHeight + "px"; // Відкриваємо
+                button.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
             } else {
-                currentItem.setAttribute('aria-expanded', 'true');
-                content.style.maxHeight = '1500px'; 
+                content.style.maxHeight = '0'; // Закриваємо
+                button.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
             }
         }
 
