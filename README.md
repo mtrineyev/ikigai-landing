@@ -35,11 +35,15 @@ The project follows a standard structure optimized for Firebase deployment:
 │   ├── assets/             # Directory for images and other static files
 │   ├── css/                # Directory for CSS
 │   ├── 404.html            # 404 page not found file
-│   └── index.html          # Main landing page file
+│   ├── favicon.ico         # Icon file
+│   ├── index.html          # Main landing page file
+│   ├── robots.txt          # Robot file for SEO
+│   └── sitemap.xml         # Sitemap file for SEO
 ├── src/
 │   └── inputs.css          # Instructions for Tailwindcss
 ├── LICENSE                 # MIT License
 ├── README.md               # This
+├── .gitignore              # Files/folders are restricted to be committed to GitHub
 ├── package-lock.json       # Node modules lock
 ├── package.json            # Dependencies file for Tailwindcss builder
 ├── tailwind.config.js      # File with folders list for Tailwindcss builder
@@ -112,7 +116,7 @@ firebase deploy
 #### Option C: Partial Deployment (Functions Only)
 If you only updated the backend logic (Cloud Functions) and didn't touch the website content:
 ```bash
-ffirebase deploy --only functions:submitForm
+firebase deploy --only functions:submitForm
 ```
 
 *Note: This is useful for updating secret bindings or backend logic fixes without re-uploading hosting assets.*
