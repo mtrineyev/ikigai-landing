@@ -79,11 +79,43 @@ npm run init-tailwind
 | SMTP_PASS | Password for SMTP user |
 | RECEIVING_EMAIL | List of reciepients, devided by commas |
 
-5. **Deployment (Firebase):**
-* Ensure you have the Firebase CLI installed.
-* Initialize your project: `firebase init` (select Hosting and set the public directory to `public`).
-* Create Tailwindcss CSS: `npm run build` (if there were some changes in html styles)
-* Deploy: `firebase deploy`
+
+## Deployment
+
+### 1. One-time Setup
+* **Install Tools:** Ensure you have Node.js and the Firebase CLI installed.
+* **Initialize Project:** Run `firebase init` **only once** when you first clone the repository or set up the project locally. Select *Hosting* and set the public directory to `public`.
+
+### 2. Pre-deployment Checklist (Mandatory)
+Before any deployment, you **must** perform these steps:
+
+1.  **Update Sitemap Date:**
+    Open `public/sitemap.xml` and update the `<lastmod>` tag to the current date (format: `YYYY-MM-DD`).
+    
+2.  **Rebuild CSS:**
+    If you made changes to HTML classes or styles, regenerate the Tailwind CSS file:
+    ```bash
+    npm run build
+    ```
+
+### 3. Deployment Methods
+
+#### Option A: Automatic Deployment (CI/CD)
+The site is configured to deploy automatically via **GitHub Actions** whenever code is merged into the `main` branch. This is the recommended way for production releases.
+
+#### Option B: Manual Full Deployment
+If you need to deploy changes manually from your local machine (Hosting + Functions):
+```bash
+firebase deploy
+```
+
+#### Option C: Partial Deployment (Functions Only)
+If you only updated the backend logic (Cloud Functions) and didn't touch the website content:
+```bash
+ffirebase deploy --only functions:submitForm
+```
+
+*Note: This is useful for updating secret bindings or backend logic fixes without re-uploading hosting assets.*
 
 ---
 
