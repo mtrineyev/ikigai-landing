@@ -749,9 +749,12 @@
             document.querySelectorAll('.accordion-item button[aria-expanded="true"]').forEach(otherButton => {
                 if (otherButton !== button) {
                     otherButton.setAttribute('aria-expanded', 'false');
-                    // Знаходимо контент сусіда
-                    otherButton.closest('.accordion-item').querySelector('.accordion-content').style.maxHeight = '0';
-                    // Повертаємо іконку сусіда
+
+                    const otherContent = otherButton.closest('.accordion-item').querySelector('.accordion-content');
+                    otherContent.style.maxHeight = '0';
+                    otherContent.style.paddingTop = '0';
+                    otherContent.style.paddingBottom = '0';
+
                     otherButton.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
                 }
             });
