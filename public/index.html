@@ -987,6 +987,94 @@
                 document.body.style.overflow = '';
             }
         }
+
+        // === PHONE INPUT MASK (STANDALONE MODULE) ===
+        document.addEventListener('DOMContentLoaded', () => {
+            const phoneInput = document.getElementById('phone');
+            if (!phoneInput) return;
+
+            const formatPhoneNumber = (value) => {
+                if (!value) return value;
+                
+                // 1. Очищаємо від всього зайвого (лишаємо тільки цифри)
+                let phoneNumber = value.replace(/[^\d]/g, '');
+                
+                // 2. Якщо пусто - виходимо
+                if (phoneNumber.length === 0) return '';
+
+                // === ГОЛОВНЕ ВИПРАВЛЕННЯ ===
+                // Якщо користувач почав вводити "0..." (наприклад 050), 
+                // ми розуміємо, що це український номер без коду країни.
+                // Додаємо "38" на початок віртуально.
+                if (phoneNumber.startsWith('0')) {
+                    phoneNumber = '38' + phoneNumber;
+                }
+                // ==========================
+
+                // 3. Форматування (тепер phoneNumber точно починається з 380...)
+                
+                // Якщо ввели тільки "3" або "38"
+                if (phoneNumber.length < 3) return '+' + phoneNumber;
+
+                // +38 (0...
+                if (phoneNumber.length < 6) {
+                    return `+38 (${phoneNumber.slice(2)}`;
+                }
+                
+                // +38 (050) 123...
+                if (phoneNumber.length < 9) {
+                    return `+38 (${phoneNumber.slice(2, 5)}) ${phoneNumber.slice(5)}`;
+                }
+
+                // +38 (050) 123-45...
+                if (phoneNumber.length < 11) {
+                    return `+38 (${phoneNumber.slice(2, 5)}) ${phoneNumber.slice(5, 8)}-${phoneNumber.slice(8)}`;
+                }
+
+                // +38 (050) 123-45-67
+                return `+38 (${phoneNumber.slice(2, 5)}) ${phoneNumber.slice(5, 8)}-${phoneNumber.slice(8, 10)}-${phoneNumber.slice(10, 12)}`;
+            };
+
+            const onPhoneInput = (e) => {
+                const input = e.target;
+                
+                // Зберігаємо позицію курсору (щоб було зручно правити всередині номера)
+                // Це не обов'язково, але покращує UX
+                const selectionStart = input.selectionStart;
+                const oldLength = input.value.length;
+
+                const formatted = formatPhoneNumber(input.value);
+                
+                if (input.value !== formatted) {
+                    input.value = formatted;
+                    
+                    // Коригування курсору (проста версія: якщо додали символи, курсор в кінець)
+                    // Для складних масок потрібна складна математика, але для цього кейсу - 
+                    // просто ставимо в кінець, якщо вводимо нові цифри.
+                }
+            };
+
+            // Додаємо обробку Backspace, щоб можна було нормально стирати
+            const onKeyDown = (e) => {
+                // Якщо натиснули Backspace і ми знаходимося одразу після "+38 (", 
+                // то очищаємо поле повністю, щоб не застрягти
+                if (e.key === 'Backspace' && phoneInput.value.length <= 6) {
+                     // Дозволяємо стандартне видалення
+                }
+            };
+
+            phoneInput.addEventListener('input', onPhoneInput);
+            phoneInput.addEventListener('keydown', onKeyDown); // Додали для кращого контролю видалення
+            
+            phoneInput.addEventListener('focus', () => {
+                if (!phoneInput.value) phoneInput.value = '+38 (0';
+            });
+            
+            phoneInput.addEventListener('blur', () => {
+                if (phoneInput.value === '+38 (0') phoneInput.value = '';
+            });
+        });
+
     </script>
 </body>
 </html>
