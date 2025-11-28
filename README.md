@@ -83,6 +83,30 @@ npm run init-tailwind
 | SMTP_PASS | Password for SMTP user |
 | RECEIVING_EMAIL | List of reciepients, devided by commas |
 
+## ⚡ Performance & Caching Strategy {#caching-strategy}
+
+The project uses an aggressive caching strategy to ensure instant page loads for returning visitors.
+
+* **Immutable Caching:** All static assets (images, CSS, JS, fonts) are served with `Cache-Control: public, max-age=31536000, immutable`.
+* **Implication:** Browsers will **never** check for updates to these files once downloaded, until the cache expires (1 year) or the cache is manually cleared.
+
+### 🔄 How to Update Static Assets (Cache Busting)
+
+Since we do not use a bundler (like Webpack/Vite) that handles file hashing automatically, **manual cache busting is required** when you replace an existing image or stylesheet.
+
+**Procedure:**
+1.  Replace the file in the `public/assets/` folder (e.g., `logoFull.jpg`).
+2.  Open `public/index.html`.
+3.  Locate the reference to the file (`<img src="...">` or `<link href="...">`).
+4.  Update the version query string (`?v=...`) to the new version number or current date.
+
+**Example:**
+```html
+<img src="assets/logoFull.jpg?v=1.0.0" ... >
+
+<img src="assets/logoFull.jpg?v=1.1.0" ... >
+```
+*Note: This forces the browser to treat it as a completely new resource and download the latest version immediately.*
 
 ## Deployment
 
@@ -93,14 +117,17 @@ npm run init-tailwind
 ### 2. Pre-deployment Checklist (Mandatory)
 Before any deployment, you **must** perform these steps:
 
-1.  **Update Sitemap Date:**
+1.  **Update Sitemap Date:**<br>
     Open `public/sitemap.xml` and update the `<lastmod>` tag to the current date (format: `YYYY-MM-DD`).
     
-2.  **Rebuild CSS:**
+2.  **Rebuild CSS:**<br>
     If you made changes to HTML classes or styles, regenerate the Tailwind CSS file:
     ```bash
     npm run build
     ```
+
+3. **Make sure you follow images cache invalidate procedure:**<br>
+    Please read carefully [⚡ Performance & Caching Strategy](#caching-strategy).
 
 ### 3. Deployment Methods
 
