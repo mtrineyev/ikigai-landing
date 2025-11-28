@@ -380,6 +380,7 @@
                                 class="w-full gallery-item">
                         </picture>
                     </div>
+
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="1">
                         <picture>
                             <source srcset="assets/images/Territory.webp" type="image/webp">
@@ -390,6 +391,7 @@
                                 class="w-full gallery-item">
                         </picture>
                     </div>
+
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="2">
                         <picture>
                             <source srcset="assets/images/LivingRoom.webp" type="image/webp">
@@ -400,6 +402,7 @@
                                 class="w-full gallery-item">
                         </picture>
                     </div>
+
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="3">
                         <picture>
                             <source srcset="assets/images/Lunch.webp" type="image/webp">
@@ -410,6 +413,7 @@
                                 class="w-full gallery-item">
                         </picture>
                     </div>
+
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="4">
                         <picture>
                             <source srcset="assets/images/Concert.webp" type="image/webp">
@@ -420,6 +424,7 @@
                                 class="w-full gallery-item">
                         </picture>
                     </div>
+
                     <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="5">
                         <picture>
                             <source srcset="assets/images/ActiveResting.webp" type="image/webp">
@@ -430,24 +435,24 @@
                                 class="w-full gallery-item">
                         </picture>
                     </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="6">
+
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb md:hidden lg:block" data-index="6">
                         <picture>
                             <source srcset="assets/images/Terrase.webp" type="image/webp">
-                            <img src="assets/images/Terrase.jpg"
-                                width="800" height="600"
-                                loading="lazy" 
-                                alt="Літня тераса для відпочинку в приватному пансіонаті Ікіґай" 
-                                class="w-full gallery-item">
+                            <img src="assets/images/Terrase.jpg" loading="lazy" 
+                                 alt="Літня тераса для відпочинку в приватному пансіонаті Ікіґай" 
+                                 class="w-full gallery-item"
+                                 width="800" height="600">
                         </picture>
                     </div>
-                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb" data-index="7">
+
+                    <div class="rounded-lg overflow-hidden shadow-lg gallery-thumb md:hidden lg:block" data-index="7">
                         <picture>
                             <source srcset="assets/images/Walking.webp" type="image/webp">
-                            <img src="assets/images/Walking.jpg"
-                                width="800" height="600"
-                                loading="lazy" 
-                                alt="Реабілітація після інсульту: прогулянки з доглядальницею" 
-                                class="w-full gallery-item">
+                            <img src="assets/images/Walking.jpg" loading="lazy" 
+                                 alt="Реабілітація після інсульту: прогулянки з доглядальницею" 
+                                 class="w-full gallery-item"
+                                 width="800" height="600">
                         </picture>
                     </div>
                 </div>
@@ -733,10 +738,18 @@
         </button>
     </div>
 
-    <!-- JavaScript for smooth scrolling, mobile menu toggle, Lightbox, and Accordion -->
-    <script>
-        // === ACCORDION LOGIC ===
+    <button id="scroll-to-top" aria-label="Прокрутити вгору" 
+            class="fixed bottom-6 right-6 z-40 p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 opacity-0 translate-y-10 invisible focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
 
+    <!-- JavaScript for smooth scrolling, form actions, -->
+    <!-- mobile menu toggle, Lightbox, and Accordion -->
+    <script>
+
+        // === ACCORDION LOGIC ===
         function toggleAccordion(button) {
             // Отримуємо батьківський елемент (item)
             const currentItem = button.closest('.accordion-item');
@@ -781,7 +794,6 @@
 
 
         // === LIGHTBOX LOGIC ===
-        
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         
@@ -819,6 +831,35 @@
             showImage(newIndex);
         }
 
+
+        // === SCROLL TO TOP BUTTON ===
+        const scrollTopBtn = document.getElementById('scroll-to-top');
+        let isButtonVisible = false;
+
+        window.addEventListener('scroll', () => {
+            const shouldBeVisible = window.scrollY > 500;
+
+            if (shouldBeVisible && !isButtonVisible) {
+                scrollTopBtn.classList.remove('opacity-0', 'translate-y-10', 'invisible');
+                scrollTopBtn.classList.add('opacity-100', 'translate-y-0', 'visible');
+                isButtonVisible = true;
+            } else if (!shouldBeVisible && isButtonVisible) {
+                scrollTopBtn.classList.add('opacity-0', 'translate-y-10', 'invisible');
+                scrollTopBtn.classList.remove('opacity-100', 'translate-y-0', 'visible');
+                isButtonVisible = false;
+            }
+        }, { passive: true });
+
+        // Клік по кнопці
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+
+        // === DOMContentLoaded Event Listener ===
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
