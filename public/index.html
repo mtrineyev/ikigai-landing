@@ -750,7 +750,7 @@
     </div>
 
     <button id="scroll-to-top" aria-label="Прокрутити вгору" 
-            class="fixed bottom-6 right-6 z-40 p-3 bg-indigo-600 text-white rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 opacity-0 translate-y-10 invisible focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            class="fixed bottom-6 right-6 z-50 p-3 bg-orange-500 text-white rounded-full shadow-2xl hover:bg-orange-600 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
@@ -843,25 +843,25 @@
         }
 
 
-        // === SCROLL TO TOP BUTTON ===
+        // === SCROLL TO TOP BUTTON (MOBILE FIX) ===
         const scrollTopBtn = document.getElementById('scroll-to-top');
         let isButtonVisible = false;
 
+        // Використовуємо passive: true для плавності на мобільних
         window.addEventListener('scroll', () => {
             const shouldBeVisible = window.scrollY > 500;
 
             if (shouldBeVisible && !isButtonVisible) {
-                scrollTopBtn.classList.remove('opacity-0', 'translate-y-10', 'invisible');
-                scrollTopBtn.classList.add('opacity-100', 'translate-y-0', 'visible');
+                scrollTopBtn.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+                scrollTopBtn.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
                 isButtonVisible = true;
             } else if (!shouldBeVisible && isButtonVisible) {
-                scrollTopBtn.classList.add('opacity-0', 'translate-y-10', 'invisible');
-                scrollTopBtn.classList.remove('opacity-100', 'translate-y-0', 'visible');
+                scrollTopBtn.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+                scrollTopBtn.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
                 isButtonVisible = false;
             }
         }, { passive: true });
 
-        // Клік по кнопці
         scrollTopBtn.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
@@ -1089,7 +1089,7 @@
 
 
         // Menu element highlighting based on scroll position
-document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('nav.hidden.md\\:flex a');
 
