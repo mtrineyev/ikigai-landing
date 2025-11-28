@@ -83,7 +83,7 @@ npm run init-tailwind
 | SMTP_PASS | Password for SMTP user |
 | RECEIVING_EMAIL | List of reciepients, devided by commas |
 
-## ⚡ Performance & Caching Strategy {#caching-strategy}
+## ⚡ Performance & Caching Strategy
 
 The project uses an aggressive caching strategy to ensure instant page loads for returning visitors.
 
@@ -127,7 +127,7 @@ Before any deployment, you **must** perform these steps:
     ```
 
 3. **Make sure you follow images cache invalidate procedure:**<br>
-    Please read carefully [⚡ Performance & Caching Strategy](#caching-strategy).
+    Please read carefully [⚡ Performance & Caching Strategy](#-performance--caching-strategy).
 
 ### 3. Deployment Methods
 
