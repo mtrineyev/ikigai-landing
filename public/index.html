@@ -988,6 +988,7 @@
             }
         }
 
+
         // === PHONE INPUT MASK (STANDALONE MODULE) ===
         document.addEventListener('DOMContentLoaded', () => {
             const phoneInput = document.getElementById('phone');
@@ -1072,6 +1073,53 @@
             
             phoneInput.addEventListener('blur', () => {
                 if (phoneInput.value === '+38 (0') phoneInput.value = '';
+            });
+        });
+
+
+        // Menu element highlighting based on scroll position
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav.hidden.md\\:flex a');
+
+            if (sections.length === 0 || navLinks.length === 0) return;
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                // Threshold 0.3 означає: "Спрацюй, коли хоча б 30% секції видно"
+                // Для Hero це спрацює ідеально
+                threshold: 0.3
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+
+                        // 1. АРХІТЕКТУРНА ЗМІНА:
+                        // Спочатку БЕЗУМОВНО очищаємо активний клас з усіх посилань.
+                        // Це гарантує, що якщо ми на Hero (у якого немає посилання),
+                        // то меню стане просто сірим (чистим).
+                        navLinks.forEach(link => {
+                            link.classList.remove('text-indigo-600', 'font-bold');
+                            link.classList.add('text-gray-600');
+                        });
+
+                        // 2. Шукаємо нове посилання
+                        const activeLink = document.querySelector(`nav.hidden.md\\:flex a[href="#${id}"]`);
+
+                        // 3. Якщо знайшли - підсвічуємо
+                        if (activeLink) {
+                            activeLink.classList.remove('text-gray-600');
+                            activeLink.classList.add('text-indigo-600', 'font-bold');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
             });
         });
 
