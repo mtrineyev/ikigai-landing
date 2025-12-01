@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,9 +39,14 @@
     <link rel="icon" href="assets/favicon-192x192.png" type="image/x-icon" sizes="192x192">
 
     <style>
+        html {
+            background-color: #1f2937; 
+        }
         body {
             font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
             scroll-behavior: smooth;
+            min-height: 100vh;
         }
         .shadow-hero {
             box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
@@ -177,7 +183,7 @@
 
     <main>
         <!-- 2. Hero Section -->
-        <section id="hero" class="relative text-white py-24 md:py-32 overflow-hidden">
+        <section id="hero" class="relative z-0 text-white py-24 md:py-32 overflow-hidden">
             
             <div class="absolute inset-0 w-full h-full -z-10">
                 <picture>
@@ -479,10 +485,10 @@
                     
                     <!-- FAQ Item 1: Вартість послуг -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
                                 onclick="toggleAccordion(this)">
-                            <span class="text-lg font-semibold text-gray-800 text-left">Скільки коштують послуги пансіонату?</span>
+                            <span class="text-lg font-semibold text-left">Скільки коштують послуги пансіонату?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -497,10 +503,10 @@
 
                     <!-- FAQ Item 2: Що входить до послуг -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
                                 onclick="toggleAccordion(this)">
-                            <span class="text-lg font-semibold text-gray-800 text-left">Що входить до базового пакету послуг пансіонату?</span>
+                            <span class="text-lg font-semibold text-left">Що входить до базового пакету послуг пансіонату?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -517,10 +523,10 @@
                     
                     <!-- FAQ Item 3: Додаткові послуги -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
                                 onclick="toggleAccordion(this)">
-                            <span class="text-lg font-semibold text-gray-800 text-left">Чи є послуги, які сплачуються додатково?</span>
+                            <span class="text-lg font-semibold text-left">Чи є послуги, які сплачуються додатково?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -537,9 +543,9 @@
                     
                     <!-- FAQ Item 4: Мінімальний термін -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
-                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">Який мінімальний термін перебування в пансіонаті?</span>
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-left">Який мінімальний термін перебування в пансіонаті?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -549,9 +555,9 @@
                     
                     <!-- FAQ Item 5: Допомога у переїзді -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
-                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">У вас є досвід, як вмовити рідних скористатися послугами пансіонату?</span>
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-left">У вас є досвід, як вмовити рідних скористатися послугами пансіонату?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -561,9 +567,9 @@
                     
                     <!-- FAQ Item 6: Документи -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
-                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">Які документи потрібно мати з собою при надходженні?</span>
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-left">Які документи потрібно мати з собою при надходженні?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
@@ -585,9 +591,9 @@
 
                     <!-- FAQ Item 7: Речі, які потрібно мати з собою -->
                     <div class="border border-gray-200 rounded-xl overflow-hidden accordion-item">
-                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 hover:bg-gray-100 focus:outline-none"
+                        <button class="w-full flex justify-between items-center p-5 bg-gray-50 text-gray-800 transition-colors duration-200 hover:bg-indigo-100 hover:text-indigo-900 aria-[expanded=true]:bg-indigo-200 aria-[expanded=true]:text-indigo-800 focus:outline-none"
                                 aria-expanded="false"
-                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-gray-800 text-left">Які речі та предмети необхідно взяти з собою?</span>
+                                onclick="toggleAccordion(this)">                            <span class="text-lg font-semibold text-left">Які речі та предмети необхідно взяти з собою?</span>
                             <svg class="w-6 h-6 text-indigo-600 accordion-icon flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
                         <div class="accordion-content bg-white px-5 text-gray-600 border-t border-gray-200">
