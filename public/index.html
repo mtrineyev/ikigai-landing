@@ -957,6 +957,12 @@
                         formMessage.classList.remove('hidden');
                         formMessage.classList.add('text-green-600');
                         contactForm.reset();
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'generate_lead', {
+                                event_category: 'contact_form',
+                                event_label: 'Ikigai Landing Page'
+                            });
+                        }
                     } else {
                         throw new Error(data.message || 'Помилка відправки. Спробуйте пізніше.');
                     }
