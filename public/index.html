@@ -125,21 +125,14 @@
     }
     </script>
 
-    <!-- Google Analytics with delayed loading -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CD760ZZ6L8"></script>
     <script>
-        function loadAnalytics() {
-            var script = document.createElement('script');
-            script.src = "https://www.googletagmanager.com/gtag/js?id=G-HXJ8YST0W7";
-            script.async = true;
-            document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', 'G-HXJ8YST0W7');
-        }
-        setTimeout(loadAnalytics, 3500);
+        gtag('config', 'G-CD760ZZ6L8');
     </script>    
 </head>
 
@@ -724,7 +717,7 @@
     <!-- 9. Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-            <p>&copy; 2025 Пансіонат для літніх людей «Ікіґай». Усі права захищені.</p>
+            <p>&copy; 2021–2026 Пансіонат для літніх людей «Ікіґай». Усі права захищені.</p>
             <p class="mt-2">Створено з турботою. Життя, що має сенс.</p>
         </div>
     </footer>
@@ -766,14 +759,11 @@
 
         // === ACCORDION LOGIC ===
         function toggleAccordion(button) {
-            // Отримуємо батьківський елемент (item)
             const currentItem = button.closest('.accordion-item');
             const content = currentItem.querySelector('.accordion-content');
             
-            // Перевіряємо статус через кнопку (а не div)
             const isExpanded = button.getAttribute('aria-expanded') === 'true';
             
-            // 1. Закриваємо всі відкриті, крім поточного
             document.querySelectorAll('.accordion-item button[aria-expanded="true"]').forEach(otherButton => {
                 if (otherButton !== button) {
                     otherButton.setAttribute('aria-expanded', 'false');
@@ -787,19 +777,16 @@
                 }
             });
 
-            // 2. Перемикаємо поточний
             button.setAttribute('aria-expanded', !isExpanded);
             
-            // Логіка CSS transitions (мінімізуємо reflow, змінюючи лише maxHeight)
             if (!isExpanded) {
-                // Відкриваємо
                 content.style.paddingTop = "1.5rem";
                 content.style.paddingBottom = "1.5rem";
                 content.style.maxHeight = (content.scrollHeight + 50) + "px";
 
                 button.querySelector('.accordion-icon').style.transform = 'rotate(180deg)';
             } else {
-                content.style.maxHeight = '0'; // Закриваємо
+                content.style.maxHeight = '0';
                 content.style.paddingTop = '0';
                 content.style.paddingBottom = '0';
 
@@ -812,7 +799,6 @@
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightbox-image');
         
-        // Отримуємо всі посилання на зображення з HTML-структури
         const imageSources = Array.from(document.querySelectorAll('#gallery-container img')).map(img => img.src.replace(/\?.*$/, ''));
         
         let currentImageIndex = 0;
@@ -833,7 +819,7 @@
         function nextImage() {
             let newIndex = currentImageIndex + 1;
             if (newIndex >= imageSources.length) {
-                newIndex = 0; // Зациклення
+                newIndex = 0;
             }
             showImage(newIndex);
         }
@@ -841,7 +827,7 @@
         function prevImage() {
             let newIndex = currentImageIndex - 1;
             if (newIndex < 0) {
-                newIndex = imageSources.length - 1; // Зациклення
+                newIndex = imageSources.length - 1;
             }
             showImage(newIndex);
         }
@@ -851,7 +837,6 @@
         const scrollTopBtn = document.getElementById('scroll-to-top');
         let isButtonVisible = false;
 
-        // Використовуємо passive: true для плавності на мобільних
         window.addEventListener('scroll', () => {
             const shouldBeVisible = window.scrollY > 500;
 
@@ -933,10 +918,8 @@
             contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
-                // Якщо в полі "website" щось є — це 100% ботва, бо людина це поле не бачить
                 if (trapField && trapField.value !== "") {
                     console.warn('Bot detected via honeypot!');
-                    // Імітуємо успіх, щоб ботва не вчилася обходити захист
                     formMessage.textContent = 'Дякуємо! Вашу заявку прийнято.'; 
                     formMessage.classList.remove('hidden', 'text-red-500');
                     formMessage.classList.add('text-green-600');
@@ -949,7 +932,6 @@
                 formMessage.classList.add('hidden');
                 formMessage.classList.remove('text-green-600', 'text-red-500');
 
-                // Отримуємо дані форми
                 const formData = new FormData(contactForm);
                 const payload = {
                     name: formData.get('name'),
@@ -957,8 +939,6 @@
                     message: formData.get('message')
                 };
 
-                // URL для виклику Firebase Function.
-                // Використовуємо відносний шлях, оскільки ми додали rewrite у firebase.json
                 const functionUrl = '/submitForm'; 
 
                 try {
@@ -1003,7 +983,6 @@
             }
         }
 
-
         // === PHONE INPUT MASK (STANDALONE MODULE) ===
         document.addEventListener('DOMContentLoaded', () => {
             const phoneInput = document.getElementById('phone');
@@ -1012,24 +991,14 @@
             const formatPhoneNumber = (value) => {
                 if (!value) return value;
                 
-                // 1. Очищаємо від всього зайвого (лишаємо тільки цифри)
                 let phoneNumber = value.replace(/[^\d]/g, '');
                 
-                // 2. Якщо пусто - виходимо
                 if (phoneNumber.length === 0) return '';
 
-                // === ГОЛОВНЕ ВИПРАВЛЕННЯ ===
-                // Якщо користувач почав вводити "0..." (наприклад 050), 
-                // ми розуміємо, що це український номер без коду країни.
-                // Додаємо "38" на початок віртуально.
                 if (phoneNumber.startsWith('0')) {
                     phoneNumber = '38' + phoneNumber;
                 }
-                // ==========================
 
-                // 3. Форматування (тепер phoneNumber точно починається з 380...)
-                
-                // Якщо ввели тільки "3" або "38"
                 if (phoneNumber.length < 3) return '+' + phoneNumber;
 
                 // +38 (0...
@@ -1054,8 +1023,6 @@
             const onPhoneInput = (e) => {
                 const input = e.target;
                 
-                // Зберігаємо позицію курсору (щоб було зручно правити всередині номера)
-                // Це не обов'язково, але покращує UX
                 const selectionStart = input.selectionStart;
                 const oldLength = input.value.length;
 
@@ -1063,24 +1030,17 @@
                 
                 if (input.value !== formatted) {
                     input.value = formatted;
-                    
-                    // Коригування курсору (проста версія: якщо додали символи, курсор в кінець)
-                    // Для складних масок потрібна складна математика, але для цього кейсу - 
-                    // просто ставимо в кінець, якщо вводимо нові цифри.
                 }
             };
 
-            // Додаємо обробку Backspace, щоб можна було нормально стирати
             const onKeyDown = (e) => {
-                // Якщо натиснули Backspace і ми знаходимося одразу після "+38 (", 
-                // то очищаємо поле повністю, щоб не застрягти
                 if (e.key === 'Backspace' && phoneInput.value.length <= 6) {
-                     // Дозволяємо стандартне видалення
+                    // Allow backspace to delete the last digit, but if we are at the point where only "+38 (0" is left, we want to clear it completely
                 }
             };
 
             phoneInput.addEventListener('input', onPhoneInput);
-            phoneInput.addEventListener('keydown', onKeyDown); // Додали для кращого контролю видалення
+            phoneInput.addEventListener('keydown', onKeyDown);
             
             phoneInput.addEventListener('focus', () => {
                 if (!phoneInput.value) phoneInput.value = '+38 (0';
@@ -1101,8 +1061,8 @@
 
             const observerOptions = {
                 root: null,
-                rootMargin: '-45% 0px -45% 0px', // Головна магія! Робимо активну зону вузькою смужкою (10%) по центру екрану.
-                threshold: 0 // Спрацює миттєво, коли секція торкнеться цієї смужки.
+                rootMargin: '-45% 0px -45% 0px',
+                threshold: 0
             };
 
             const observer = new IntersectionObserver((entries) => {
@@ -1110,17 +1070,13 @@
                     if (entry.isIntersecting) {
                         const id = entry.target.getAttribute('id');
                         
-                        // 1. Спочатку завжди очищаємо все
                         navLinks.forEach(link => {
                             link.classList.remove('text-indigo-600', 'font-bold');
                             link.classList.add('text-gray-600');
                         });
 
-                        // 2. Шукаємо посилання для цієї секції
                         const activeLink = document.querySelector(`nav.hidden.md\\:flex a[href="#${id}"]`);
 
-                        // 3. Якщо для цієї секції є пункт меню — підсвічуємо його.
-                        // Якщо це Hero (activeLink не знайдено) — меню залишиться чистим.
                         if (activeLink) {
                             activeLink.classList.remove('text-gray-600');
                             activeLink.classList.add('text-indigo-600', 'font-bold');
