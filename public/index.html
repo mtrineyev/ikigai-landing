@@ -139,7 +139,7 @@
 <body class="bg-gray-800 text-gray-800"> <div class="bg-gray-50">
 
     <!-- 1. Header and Navigation -->
-    <header class="sticky top-0 z-50 bg-white shadow-lg">
+    <header id="main-header" class="sticky top-0 z-50 bg-white shadow-lg transition-transform duration-300 transform translate-y-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <!-- Logo/Title -->
             <a href="#hero" class="text-2xl font-bold text-indigo-700 hover:text-indigo-900 transition duration-300">
@@ -833,7 +833,34 @@
         }
 
 
-        // === SCROLL TO TOP BUTTON (MOBILE FIX) ===
+        // === SMART HEADER (HIDE ON SCROLL DOWN, SHOW ON SCROLL UP) ===
+        const mainHeader = document.getElementById('main-header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY <= 0) {
+                mainHeader.style.transform = 'translateY(0)';
+                return;
+            }
+
+            if (currentScrollY > lastScrollY) {
+                mainHeader.style.transform = 'translateY(-100%)';
+                
+                const mobileMenuObj = document.getElementById('mobile-menu');
+                if (mobileMenuObj && !mobileMenuObj.classList.contains('hidden')) {
+                    mobileMenuObj.classList.add('hidden');
+                }
+            } else {
+                mainHeader.style.transform = 'translateY(0)';
+            }
+
+            lastScrollY = currentScrollY;
+        }, { passive: true });
+
+
+        // === SCROLL TO TOP BUTTON ===
         const scrollTopBtn = document.getElementById('scroll-to-top');
         let isButtonVisible = false;
 
